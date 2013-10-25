@@ -3,3 +3,12 @@ LICENSE.txt
 README.txt
 demos/
 extras/documentation
+
+.DS_Store
+
+application/configs/database.ini
+
+public_html/resources/sass/.sass-cache/*
+
+
+

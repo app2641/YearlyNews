@@ -1,0 +1,28 @@
+<phpunit bootstrap="./TestsBootstrap.php" colors="true" >
+
+    <!-- Direct -->
+    <testsuite name="NEWS Direct TestSuite">
+        <directory>./application</directory>
+    </testsuite>
+
+    <!-- Library -->
+    <testsuite name="NEWS Liberay TestSuite">
+        <directory>./library</directory>
+    </testsuite>
+
+
+    <filter>
+        <!-- If Zend Framework is inside your project's library, uncomment this filter -->
+        <whitelist>
+            <directory suffix=".php">../application/modules/direct</directory>
+            <directory suffix=".php">../library/News</directory>
+            <exclude>
+                <directory suffix=".php">../library/News/Commands</directory>
+                <file>../library/News/Model/AbstractModel.php</file>
+                <file>../library/News/Model/Column/ColumnInterface.php</file>
+                <file>../library/News/Model/Query/QueryInterface.php</file>
+            </exclude>
+        </whitelist>
+    </filter>
+
+</phpunit>
