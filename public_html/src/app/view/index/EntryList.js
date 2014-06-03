@@ -98,8 +98,14 @@ Ext.define('NEWS.view.index.EntryList', {
 
         me.tbar = [{
             xtype: 'tbtext',
-            text: '年月の指定'
-        }, combo];
+            text: '年代の指定'
+        }, combo, ' ', {
+            text: '年代の新規作成',
+            action: 'new_year'
+        }, '-', {
+            text: 'エントリの新規作成',
+            action: 'new_entry'
+        }, '-'];
     },
 
 
@@ -112,7 +118,7 @@ Ext.define('NEWS.view.index.EntryList', {
     buildYearCombo: function () {
         var store = Ext.create('Ext.data.Store', {
             autoLoad: true,
-            fields: ['id', 'value'],
+            fields: ['id', 'name'],
             proxy: {
                 type: 'direct',
                 directFn: Year.getList
@@ -122,9 +128,10 @@ Ext.define('NEWS.view.index.EntryList', {
 
         return {
             xtype: 'combobox',
+            id: 'view-index-year-combo',
             store: store,
             forceSelection: true,
-            displayField: 'value',
+            displayField: 'name',
             valueField: 'id',
             editable: false,
             queryMode: 'local',

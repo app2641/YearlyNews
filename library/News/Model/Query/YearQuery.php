@@ -39,6 +39,11 @@ class YearQuery implements QueryInterface
                 }
             }
 
+            $sql = 'INSERT INTO year
+                (name) VALUES (:name)';
+
+            $this->db->state($sql, $params);
+
         } catch (\Exception $e) {
             throw $e;
         }
@@ -90,7 +95,8 @@ class YearQuery implements QueryInterface
     public final function fetchById ($id)
     {
         try {
-            $sql = '';
+            $sql = 'SELECT * FROM year
+                WHERE year.id = ?';
 
             $result = $this->db->state($sql, $id)->fetch();
         
@@ -99,5 +105,50 @@ class YearQuery implements QueryInterface
         }
 
         return $result;
+    }
+
+
+
+    /**
+     * 指定年代のレコードを取得する
+     *
+     * @param string $year  年代名
+     * @author app2641
+     **/
+    public function fetchByName ($name)
+    {
+        try {
+            $sql = 'SELECT * FROM year
+                WHERE year.name = ?';
+
+            $result = $this->db
+                ->state($sql, $name)->fetch();
+        
+        } catch (\Exception $e) {
+            throw $e;
+        }
+
+        return $result;
+    }
+
+
+
+    /**
+     * 全レコードを取得する
+     *
+     * @author app2641
+     **/
+    public function fetchAll ()
+    {
+        try {
+            $sql = 'SELECT * FROM year';
+
+            $results = $this->db->state($sql)->fetchAll();
+        
+        } catch (\Exception $e) {
+            throw $e;
+        }
+
+        return $results;
     }
 }

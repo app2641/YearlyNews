@@ -1,1 +1,1 @@
-NEWS.REMOTING_API={url:'/direct.php',type:'remoting',timeout:'300000',actions:{Year:[{name:'getList',len:1}],Entry:[{name:'getList',len:1}]}};
+NEWS.REMOTING_API={url:'/direct.php',type:'remoting',timeout:'300000',actions:{Year:[{name:'getList',len:1},{name:'create',len:1,formHandler:true}],Entry:[{name:'getList',len:1}]}};
